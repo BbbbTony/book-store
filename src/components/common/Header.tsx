@@ -2,26 +2,14 @@ import { styled } from 'styled-components';
 import logo from '../../assets/images/logo.png';
 import { FaSignInAlt, FaRegUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
-const CATEGORY = [
-    {
-        id: null,
-        name: '전체',
-    },
-    {
-        id: 0,
-        name: '동화',
-    },
-    {
-        id: 1,
-        name: '소설',
-    },
-    {
-        id: 2,
-        name: '사회',
-    },
-];
+import { useEffect, useState } from 'react';
+import { Category } from '../../models/category.model';
+import { fetchCategory } from '../../api/category.api';
+import { useCategory } from '../../hooks/useCategory';
 
 function Header() {
+    const { category } = useCategory();
+
     return (
         <HeaderStyle>
             <h1 className="logo">
@@ -32,9 +20,11 @@ function Header() {
 
             <nav className="category">
                 <ul>
-                    {CATEGORY.map((item) => (
-                        <li key={item.id}>
-                            <Link to={item.id === null ? '/books' : `/books?category_id=${item.id}`}>{item.name}</Link>
+                    {category.map((item) => (
+                        <li key={item.category_id}>
+                            <Link to={item.category_id === null ? '/books' : `/books?category_id=${item.category_id}`}>
+                                {item.category_name}
+                            </Link>
                         </li>
                     ))}
                 </ul>
@@ -49,7 +39,7 @@ function Header() {
                         </Link>
                     </li>
                     <li>
-                        <Link to="/join">
+                        <Link to="/signup">
                             <FaRegUser />
                             회원 가입
                         </Link>
