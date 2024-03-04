@@ -2,9 +2,9 @@ export interface Book {
     id: number;
     title: string;
     img: number;
-    Category_id: number;
+    category_id: number;
     form: string;
-    isbn: number;
+    isbn: string;
     summary: string;
     detail: string;
     author: string;
@@ -12,7 +12,7 @@ export interface Book {
     contents: string;
     price: number;
     likes: number;
-    pubDate: number;
+    pubDate: string;
 }
 
 export interface BookDetail extends Book {
