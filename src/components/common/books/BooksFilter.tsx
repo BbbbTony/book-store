@@ -54,6 +54,9 @@ const BooksFilter = () => {
                     신간
                 </Button>
             </div>
+            <div>
+                <button onClick={() => alert('눌렸어 ')}>눌러</button>
+            </div>
         </BooksFilterStyle>
     );
 };
