@@ -18,6 +18,7 @@ function Books() {
                 <BooksViewSwitcher />
                 <BooksList books={books} />
                 <BooksEmpty />
+
                 <Pagination />
             </BooksStyle>
         </>
